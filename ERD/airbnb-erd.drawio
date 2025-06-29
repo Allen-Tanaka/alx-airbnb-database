@@ -1,0 +1,61 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="27.1.6">
+  <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="C-vyLk0tnHw3VtMMgP7b-1" value="" style="edgeStyle=entityRelationEdgeStyle;endArrow=ERzeroToMany;startArrow=ERone;endFill=1;startFill=0;" edge="1" parent="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="370" y="165" as="sourcePoint" />
+            <mxPoint x="440" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C-vyLk0tnHw3VtMMgP7b-12" value="" style="edgeStyle=entityRelationEdgeStyle;endArrow=ERzeroToMany;startArrow=ERone;endFill=1;startFill=0;" edge="1" parent="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="700" y="165" as="sourcePoint" />
+            <mxPoint x="460" y="205" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R2OECtjyqQREyM2jzmFB-1" value="User" style="shape=swimlane;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="180" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="R2OECtjyqQREyM2jzmFB-2" value="Property" style="shape=swimlane;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="40" width="180" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="R2OECtjyqQREyM2jzmFB-3" value="Booking" style="shape=swimlane;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="40" width="180" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="R2OECtjyqQREyM2jzmFB-4" value="Payment" style="shape=swimlane;html=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="40" width="180" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="R2OECtjyqQREyM2jzmFB-5" value="Review" style="shape=swimlane;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="260" width="180" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="R2OECtjyqQREyM2jzmFB-6" value="Message" style="shape=swimlane;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="260" width="180" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="R2OECtjyqQREyM2jzmFB-7" style="endArrow=block;" edge="1" parent="1" source="R2OECtjyqQREyM2jzmFB-1" target="R2OECtjyqQREyM2jzmFB-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="R2OECtjyqQREyM2jzmFB-8" style="endArrow=block;" edge="1" parent="1" source="R2OECtjyqQREyM2jzmFB-1" target="R2OECtjyqQREyM2jzmFB-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="R2OECtjyqQREyM2jzmFB-9" style="endArrow=block;" edge="1" parent="1" source="R2OECtjyqQREyM2jzmFB-2" target="R2OECtjyqQREyM2jzmFB-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="R2OECtjyqQREyM2jzmFB-10" style="endArrow=block;" edge="1" parent="1" source="R2OECtjyqQREyM2jzmFB-3" target="R2OECtjyqQREyM2jzmFB-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="R2OECtjyqQREyM2jzmFB-11" style="endArrow=block;" edge="1" parent="1" source="R2OECtjyqQREyM2jzmFB-1" target="R2OECtjyqQREyM2jzmFB-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="R2OECtjyqQREyM2jzmFB-12" style="endArrow=block;" edge="1" parent="1" source="R2OECtjyqQREyM2jzmFB-2" target="R2OECtjyqQREyM2jzmFB-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="R2OECtjyqQREyM2jzmFB-13" style="endArrow=block;" edge="1" parent="1" source="R2OECtjyqQREyM2jzmFB-1" target="R2OECtjyqQREyM2jzmFB-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
