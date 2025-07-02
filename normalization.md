@@ -2,107 +2,48 @@
 
 ## Introduction
 
-Normalization is a design process used in relational databases to reduce redundancy and ensure data integrity. This project normalizes the Airbnb clone database up to the Third Normal Form (3NF), resulting in a clean, efficient, and scalable schema. The main entities considered include: `User`, `Property`, `Booking`, `Payment`, and `Review`.
+Normalization is the process of organizing data to minimize redundancy and dependency. This document describes how the Airbnb Clone database schema was normalized up to the Third Normal Form (3NF), ensuring efficiency, integrity, and scalability. The database includes entities such as `User`, `Property`, `Booking`, `Payment`, `Review`, and `Message`.
 
 ---
 
-## Step-by-Step Normalization
+## 1. User Table
 
-### 1. User Entity
+### Unnormalized (UNF):
+- Contains multivalued attributes like full name and role-related duplication.
 
-#### Unnormalized:
-- UserID, FullName, Email, PhoneNumber, Location (Street, City, Country)
+### 1NF:
+- All values are atomic.
+- Separated full name into `first_name` and `last_name`.
 
-#### 1NF:
-- Atomic columns:
-  - UserID, FullName, Email, PhoneNumber, Street, City, Country
+### 2NF:
+- All non-key attributes are fully functionally dependent on the primary key `user_id`.
 
-#### 2NF:
-- No partial dependencies (UserID is primary key)
-
-#### 3NF:
-- Move location info to a new table:
-  - `Location(LocationID, Street, City, Country)`
-  - `User(UserID, FullName, Email, PhoneNumber, LocationID)`
+### 3NF:
+- All fields (email, password, phone number, etc.) are dependent only on the primary key.
+- No transitive dependencies.
+- ✅ Already in 3NF.
 
 ---
 
-### 2. Property Entity
+## 2. Property Table
 
-#### Unnormalized:
-- PropertyID, HostName, Title, Description, PricePerNight, Address, City, Country
+### Unnormalized:
+- Location stored as a full string, potentially leading to repetition.
 
-#### 1NF:
-- Atomic structure:
-  - PropertyID, HostID (linked to User), Title, Description, PricePerNight, Address, City, Country
+### 1NF:
+- Atomic fields: `name`, `description`, `pricepernight`, `location`, etc.
 
-#### 2NF:
-- No partial dependency (PropertyID is the primary key)
+### 2NF:
+- All non-key fields are dependent on `property_id`.
 
-#### 3NF:
-- Move address info to a separate table:
-  - `PropertyLocation(LocationID, Address, City, Country)`
-  - `Property(PropertyID, HostID, Title, Description, PricePerNight, LocationID)`
+### 3NF:
+- To fully comply, location could be split into a separate `Location` table if more detailed queries (e.g., filtering by country, city) are anticipated.
 
----
-
-### 3. Booking Entity
-
-#### Unnormalized:
-- BookingID, UserFullName, PropertyTitle, CheckIn, CheckOut, PaymentAmount
-
-#### 1NF:
-- Replace full names/titles with foreign keys:
-  - BookingID, UserID, PropertyID, CheckIn, CheckOut, PaymentID
-
-#### 2NF:
-- Composite key not needed; BookingID is unique
-
-#### 3NF:
-- Move payment info to a new table:
-  - `Payment(PaymentID, Amount, PaymentMethod, PaymentStatus)`
-  - `Booking(BookingID, UserID, PropertyID, CheckIn, CheckOut, PaymentID)`
-
----
-
-### 4. Review Entity
-
-#### Unnormalized:
-- ReviewID, UserName, PropertyTitle, Rating, Comment, DatePosted
-
-#### 1NF:
-- Use IDs:
-  - ReviewID, UserID, PropertyID, Rating, Comment, DatePosted
-
-#### 2NF:
-- No partial dependencies
-
-#### 3NF:
-- No transitive dependencies
-
----
-
-## Final Normalized Schema Summary (3NF)
-
-| Table             | Description                                |
-|------------------|--------------------------------------------|
-| User             | Stores user credentials and contact info   |
-| Location         | Stores city/location details               |
-| Property         | Listings created by users (hosts)          |
-| PropertyLocation | Address info for each property             |
-| Booking          | User bookings for properties               |
-| Payment          | Payment details linked to bookings         |
-| Review           | Feedback by users on properties            |
-
----
-
-## Conclusion
-
-The normalization process ensured that:
-- Each table has a clear and single purpose.
-- Redundant data is eliminated through relationships.
-- Updates and deletions are safe and efficient.
-- The schema is scalable for production use.
-
-This normalized design forms the foundation for efficient data retrieval, integrity, and maintainability in the Airbnb clone application.
-
+**Optional Improvement (not required but scalable):**
+```sql
+CREATE TABLE Location (
+    location_id UUID PRIMARY KEY,
+    address_line VARCHAR(255),
+    city VARCHAR(100),
+    country VARCHAR(100)
+);
